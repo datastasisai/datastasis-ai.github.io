@@ -149,9 +149,9 @@
     }
 
     .hero-text p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #a8b2d1;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       line-height: 1.8;
     }
 
@@ -159,6 +159,7 @@
       display: flex;
       gap: 1.5rem;
       flex-wrap: wrap;
+      margin-top: 0.5rem;
     }
 
     .button {
@@ -194,14 +195,14 @@
       align-items: center;
     }
 
-    /* remove animation from the generic hero-logo img to avoid conflicts */
+    /* base size + glow (glow tied to hero container, not to image background) */
     .hero-logo img {
       max-width: 500px;
       width: 100%;
       filter: drop-shadow(0 0 40px rgba(100, 255, 218, 0.3));
     }
 
-    /* floating animation for the hero SVG */
+    /* floating animation for the hero SVG/PNG */
     .floating-logo{
       display:block;
       width: clamp(220px, 35vw, 520px);
@@ -300,6 +301,93 @@
 
     .tech-item span { font-weight: 600; color: #fff; }
 
+    /* ROADMAP / WORKFLOW */
+    #roadmap { background:#0f1419; }
+
+    .roadmap{
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px,1fr));
+      gap: 2rem;
+    }
+
+    .roadmap::before{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      top: calc(50% - 2px);
+      height:4px;
+      background: linear-gradient(135deg, rgba(100,255,218,.25), rgba(0,217,179,.25));
+      border-radius: 4px;
+      z-index:0;
+    }
+
+    .roadmap-step{
+      position: relative;
+      background: linear-gradient(135deg, #1a1f2e 0%, #151b26 100%);
+      border: 1px solid rgba(100,255,218,.12);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(100,255,218,.08);
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      z-index:1;
+      opacity: 0;                         /* for fade-in */
+      transform: translateY(20px);        /* for fade-in */
+    }
+
+    .roadmap-step:hover{
+      transform: translateY(-6px);
+      border-color:#64ffda;
+      box-shadow: 0 16px 40px rgba(100,255,218,.18);
+    }
+
+    .roadmap-step h3{
+      margin: .75rem 0 .5rem;
+    }
+
+    .roadmap-step p{
+      color:#a8b2d1;
+      font-size: .98rem;
+    }
+
+    .step-icon{
+      width: 56px; height: 56px;
+      display:flex; align-items:center; justify-content:center;
+      margin-top:-48px; margin-bottom:.5rem;
+      border-radius:50%;
+      background: rgba(100,255,218,.12);
+      border:1px solid rgba(100,255,218,.28);
+      backdrop-filter: blur(2px);
+      filter: drop-shadow(0 0 10px rgba(100,255,218,.25));
+    }
+    .step-icon i{ font-size:1.4rem; color:#64ffda; }
+
+    .roadmap-step::after{
+      content:"";
+      position:absolute;
+      right:-12px; top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 20px; height: 20px;
+      border-right: 2px solid rgba(100,255,218,.45);
+      border-top:   2px solid rgba(100,255,218,.45);
+    }
+    /* hide arrow at row ends on desktop */
+    .roadmap-step:nth-child(4n)::after{ display:none; }
+
+    /* Responsive: stack into two columns, then single */
+    @media (max-width: 1200px){
+      .roadmap{ grid-template-columns: repeat(2, minmax(220px,1fr)); }
+      .roadmap::before{ display:none; }
+      .roadmap-step:nth-child(2n)::after{ display:none; }
+    }
+    @media (max-width: 640px){
+      .roadmap{ grid-template-columns: 1fr; }
+      .roadmap-step::after{
+        left:50%; top:auto; bottom:-12px; right:auto;
+        transform: translateX(-50%) rotate(135deg);
+      }
+    }
+
     /* Projects Preview */
     #projects { background: #0f1419; }
 
@@ -343,9 +431,6 @@
     #newsletter input:focus { outline: none; border-color: #0f1419; }
 
     #newsletter button:hover { background: #1a1f2e; transform: translateY(-2px); }
-
-    /* About values */
-    .value-card:hover { transform: translateY(-5px); }
 
     /* Footer/Contact */
     #footer {
@@ -422,6 +507,7 @@
           <li><a href="#header">Home</a></li>
           <li><a href="#expertise">Expertise</a></li>
           <li><a href="#stack">Tech Stack</a></li>
+          <li><a href="#roadmap">Workflow</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#blog">Blog</a></li>
           <li><a href="#about">About</a></li>
@@ -439,7 +525,21 @@
             <div class="hero-text">
               <div class="tagline">Engineering Intelligent Systems</div>
               <h1>From Data to<br><span class="gradient-text">Deployment</span></h1>
-              <p>We're ML & AI engineers passionate about building intelligent, scalable systems — from MLOps pipelines to generative AI applications.</p>
+
+              <!-- Refined intro text -->
+              <p>
+                We are a team of experts in <strong>Data Analytics</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, dedicated to helping companies transform data into measurable business outcomes.
+              </p>
+              <p>
+                By combining <strong>data science</strong>, <strong>process automation</strong>, and <strong>AI-driven innovation</strong>, we design intelligent systems that optimize operations, reduce costs, and uncover new growth opportunities.
+              </p>
+              <p>
+                Our solutions are built on <strong>modern cloud technologies</strong>, ensuring scalability, security, and rapid deployment across diverse business environments.
+              </p>
+              <p>
+                Our mission is simple — <strong>to give data meaning that drives business success.</strong>
+              </p>
+
               <div class="hero-buttons">
                 <a href="#expertise" class="button primary">Explore Our Expertise</a>
                 <a href="#stack" class="button secondary">See Our Stack</a>
@@ -448,6 +548,7 @@
 
             <!-- Floating hero logo -->
             <div class="hero-logo">
+              <!-- Ensure this file has a transparent background -->
               <img src="images/4.svg" alt="Datastasis AI Logo" class="floating-logo" />
             </div>
 
@@ -532,6 +633,67 @@
       </div>
     </section>
 
+    <!-- Workflow / Roadmap -->
+    <section id="roadmap">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our <span class="gradient-text">Workflow</span> Roadmap</h2>
+          <p>From discovery to reliable, monitored production systems</p>
+        </div>
+
+        <div class="roadmap">
+          <!-- 1 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-compass"></i></div>
+            <h3>Discovery</h3>
+            <p>Align on business goals, success metrics, constraints, and data availability.</p>
+          </div>
+          <!-- 2 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-download"></i></div>
+            <h3>Data Ingestion</h3>
+            <p>Ingest from APIs, DBs, files, events. Validate schemas & quality at the edge.</p>
+          </div>
+          <!-- 3 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-search"></i></div>
+            <h3>Exploration</h3>
+            <p>EDA, profiling, drift checks, bias scans; define baselines & candidate features.</p>
+          </div>
+          <!-- 4 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-cogs"></i></div>
+            <h3>Features & Modeling</h3>
+            <p>Feature store integration; classical ML & deep learning; prompt/LLM design.</p>
+          </div>
+          <!-- 5 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-trophy"></i></div>
+            <h3>Evaluation</h3>
+            <p>Offline metrics, cross-val, human-in-the-loop eval; guardrails & fairness checks.</p>
+          </div>
+          <!-- 6 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-tools"></i></div>
+            <h3>MLOps & CI/CD</h3>
+            <p>Versioning (data/model/code), MLflow, Docker, IaC, tests; automated pipelines.</p>
+          </div>
+          <!-- 7 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Deployment</h3>
+            <p>Batch/real-time serving (FastAPI, gRPC), canary/blue-green, scalable infra.</p>
+          </div>
+          <!-- 8 -->
+          <div class="roadmap-step">
+            <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Monitoring & Iteration</h3>
+            <p>Telemetry, drift & quality monitoring, feedback loops, continuous improvement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Projects Preview -->
     <section id="projects">
       <div class="container">
@@ -552,7 +714,7 @@
         <div class="project-card">
           <div class="project-content">
             <h3>RAG-Powered Knowledge Assistant</h3>
-            <p>Production-ready LLM application with retrieval-augmented generation, vector search, and conversational memory using LangChain and CrewAI.</p>
+            <p>Production-ready LLLM application with retrieval-augmented generation, vector search, and conversational memory using LangChain and CrewAI.</p>
             <div class="tech-tags">
               <span class="tag">LangChain</span><span class="tag">CrewAI</span><span class="tag">Pinecone</span>
               <span class="tag">OpenAI</span><span class="tag">Streamlit</span><span class="tag">Redis</span>
@@ -698,6 +860,7 @@
               <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                 <a href="#expertise" style="color: #a8b2d1;">Expertise</a>
                 <a href="#stack" style="color: #a8b2d1;">Tech Stack</a>
+                <a href="#roadmap" style="color: #a8b2d1;">Workflow</a>
                 <a href="#projects" style="color: #a8b2d1;">Projects</a>
                 <a href="#blog" style="color: #a8b2d1;">Blog</a>
                 <a href="#about" style="color: #a8b2d1;">About</a>
@@ -770,8 +933,8 @@
       });
     }, observerOptions);
 
-    // Add fade-in effect to sections
-    document.querySelectorAll('.expertise-card, .project-card, .blog-card').forEach(el => {
+    // Add fade-in effect to sections (include roadmap steps)
+    document.querySelectorAll('.expertise-card, .project-card, .blog-card, .roadmap-step').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(20px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
