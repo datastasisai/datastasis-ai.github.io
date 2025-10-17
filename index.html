@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="sr">
 <head>
-  <title>Datastasis AI - Engineering Intelligent Systems</title>
+  <title>Datastasis AI - Inženjering Inteligentnih Sistema</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <meta name="description" content="ML & AI engineers building intelligent, scalable systems — from MLOps pipelines to generative AI applications.">
-  <meta name="keywords" content="AI, Machine Learning, MLOps, Data Science, LLMs, RAG, Cloud Computing">
+  <meta name="description" content="ML & AI inženjeri koji grade inteligentne, skalabilne sisteme — od MLOps pipeline-a do generativnih AI aplikacija.">
+  <meta name="keywords" content="AI, Mašinsko Učenje, MLOps, Data Science, LLM, RAG, Cloud Computing">
   
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Datastasis AI - Engineering Intelligent Systems">
-  <meta property="og:description" content="ML & AI engineers building intelligent, scalable systems — from MLOps pipelines to generative AI applications.">
+  <meta property="og:title" content="Datastasis AI - Inženjering Inteligentnih Sistema">
+  <meta property="og:description" content="ML & AI inženjeri koji grade inteligentne, skalabilne sisteme — od MLOps pipeline-a do generativnih AI aplikacija.">
   <meta property="og:image" content="images/4.svg">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,6 +83,36 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 2px solid rgba(100, 255, 218, 0.3);
+      color: #a8b2d1;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .lang-btn:hover {
+      border-color: #64ffda;
+      color: #64ffda;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, #64ffda 0%, #00d9b3 100%);
+      color: #0f1419;
+      border-color: transparent;
     }
 
     /* Back to Top Button */
@@ -161,6 +191,12 @@
       font-size: 1.5rem;
       font-weight: 700;
       color: #fff;
+    }
+
+    #nav .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
     }
 
     #nav ul {
@@ -745,6 +781,23 @@
       color: #a8b2d1;
     }
 
+    /* Hidden content for language switching */
+    [data-lang] {
+      display: none;
+    }
+
+    [data-lang].active {
+      display: block;
+    }
+
+    [data-lang-inline] {
+      display: none;
+    }
+
+    [data-lang-inline].active {
+      display: inline;
+    }
+
     /* Mobile Styles */
     @media screen and (max-width: 968px) {
       .container { padding: 0 2rem; }
@@ -758,6 +811,10 @@
       
       .hero-logo {
         order: -1;
+      }
+      
+      #nav .nav-right {
+        gap: 1rem;
       }
       
       #nav ul {
@@ -816,14 +873,19 @@
       #newsletterForm input {
         min-width: 100%;
       }
+
+      .lang-switcher {
+        order: 3;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="#header" class="skip-to-content">Skip to main content</a>
+  <a href="#header" class="skip-to-content" data-lang="sr" class="active">Preskoči na glavni sadržaj</a>
+  <a href="#header" class="skip-to-content" data-lang="en">Skip to main content</a>
   
   <!-- Back to Top Button -->
-  <button id="backToTop" aria-label="Back to top">
+  <button id="backToTop" aria-label="Nazad na vrh">
     <i class="fas fa-arrow-up"></i>
   </button>
 
@@ -834,19 +896,25 @@
         <div class="logo">
           <span class="gradient-text">DATASTASIS AI</span>
         </div>
-        <ul>
-          <li><a href="#header">Home</a></li>
-          <li><a href="#expertise">Expertise</a></li>
-          <li><a href="#stack">Tech Stack</a></li>
-          <li><a href="#roadmap">Workflow</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#footer">Contact</a></li>
-        </ul>
-        <button id="navButton" aria-label="Toggle navigation menu">
-          <i class="fas fa-bars"></i>
-        </button>
+        <div class="nav-right">
+          <ul>
+            <li><a href="#header" data-lang="sr" class="active">Početna</a><a href="#header" data-lang="en">Home</a></li>
+            <li><a href="#expertise" data-lang="sr" class="active">Ekspertiza</a><a href="#expertise" data-lang="en">Expertise</a></li>
+            <li><a href="#stack" data-lang="sr" class="active">Tehnologije</a><a href="#stack" data-lang="en">Tech Stack</a></li>
+            <li><a href="#roadmap" data-lang="sr" class="active">Proces</a><a href="#roadmap" data-lang="en">Workflow</a></li>
+            <li><a href="#projects" data-lang="sr" class="active">Projekti</a><a href="#projects" data-lang="en">Projects</a></li>
+            <li><a href="#blog" data-lang="sr" class="active">Blog</a><a href="#blog" data-lang="en">Blog</a></li>
+            <li><a href="#about" data-lang="sr" class="active">O Nama</a><a href="#about" data-lang="en">About</a></li>
+            <li><a href="#footer" data-lang="sr" class="active">Kontakt</a><a href="#footer" data-lang="en">Contact</a></li>
+          </ul>
+          <div class="lang-switcher">
+            <button class="lang-btn active" data-language="sr">SR</button>
+            <button class="lang-btn" data-language="en">EN</button>
+          </div>
+          <button id="navButton" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -856,25 +924,48 @@
         <div class="container">
           <div class="hero-grid">
             <div class="hero-text">
-              <div class="tagline">Engineering Intelligent Systems</div>
-              <h1>From Data to<br><span class="gradient-text">Deployment</span></h1>
+              <!-- Serbian Content -->
+              <div data-lang="sr" class="active">
+                <div class="tagline">Inženjering Inteligentnih Sistema</div>
+                <h1>Od Podataka do<br><span class="gradient-text">Produkcije</span></h1>
+                <p>
+                  Mi smo tim eksperata za <strong>Analitiku Podataka</strong>, <strong>Veštačku Inteligenciju</strong> i <strong>Mašinsko Učenje</strong>, posvećeni pomaganju kompanijama da transformišu podatke u merljive poslovne rezultate.
+                </p>
+                <p>
+                  Kombinujući <strong>data science</strong>, <strong>automatizaciju procesa</strong> i <strong>AI inovacije</strong>, dizajniramo inteligentne sisteme koji optimizuju operacije, smanjuju troškove i otkrivaju nove mogućnosti za rast.
+                </p>
+                <p>
+                  Naša rešenja su zasnovana na <strong>modernim cloud tehnologijama</strong>, garantujući skalabilnost, bezbednost i brzo deployment u raznovrsnim poslovnim okruženjima.
+                </p>
+                <p>
+                  Naša misija je jednostavna — <strong>dati podacima značenje koje pokreće poslovni uspeh.</strong>
+                </p>
+                <div class="hero-buttons">
+                  <a href="#expertise" class="button primary">Istražite Našu Ekspertizu</a>
+                  <a href="#stack" class="button secondary">Pogledajte Tehnologije</a>
+                </div>
+              </div>
 
-              <p>
-                We are a team of experts in <strong>Data Analytics</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, dedicated to helping companies transform data into measurable business outcomes.
-              </p>
-              <p>
-                By combining <strong>data science</strong>, <strong>process automation</strong>, and <strong>AI-driven innovation</strong>, we design intelligent systems that optimize operations, reduce costs, and uncover new growth opportunities.
-              </p>
-              <p>
-                Our solutions are built on <strong>modern cloud technologies</strong>, ensuring scalability, security, and rapid deployment across diverse business environments.
-              </p>
-              <p>
-                Our mission is simple — <strong>to give data meaning that drives business success.</strong>
-              </p>
-
-              <div class="hero-buttons">
-                <a href="#expertise" class="button primary">Explore Our Expertise</a>
-                <a href="#stack" class="button secondary">See Our Stack</a>
+              <!-- English Content -->
+              <div data-lang="en">
+                <div class="tagline">Engineering Intelligent Systems</div>
+                <h1>From Data to<br><span class="gradient-text">Deployment</span></h1>
+                <p>
+                  We are a team of experts in <strong>Data Analytics</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, dedicated to helping companies transform data into measurable business outcomes.
+                </p>
+                <p>
+                  By combining <strong>data science</strong>, <strong>process automation</strong>, and <strong>AI-driven innovation</strong>, we design intelligent systems that optimize operations, reduce costs, and uncover new growth opportunities.
+                </p>
+                <p>
+                  Our solutions are built on <strong>modern cloud technologies</strong>, ensuring scalability, security, and rapid deployment across diverse business environments.
+                </p>
+                <p>
+                  Our mission is simple — <strong>to give data meaning that drives business success.</strong>
+                </p>
+                <div class="hero-buttons">
+                  <a href="#expertise" class="button primary">Explore Our Expertise</a>
+                  <a href="#stack" class="button secondary">See Our Stack</a>
+                </div>
               </div>
             </div>
 
@@ -890,14 +981,23 @@
     <section id="expertise">
       <div class="container">
         <div class="section-header">
-          <h2>Our <span class="gradient-text">Expertise</span></h2>
-          <p>Comprehensive AI/ML capabilities from research to production</p>
+          <h2 data-lang="sr" class="active">Naša <span class="gradient-text">Ekspertiza</span></h2>
+          <h2 data-lang="en">Our <span class="gradient-text">Expertise</span></h2>
+          <p data-lang="sr" class="active">Sveobuhvatne AI/ML mogućnosti od istraživanja do produkcije</p>
+          <p data-lang="en">Comprehensive AI/ML capabilities from research to production</p>
         </div>
         <div class="expertise-grid">
           <div class="expertise-card">
             <i class="fas fa-brain" aria-hidden="true"></i>
-            <h3>Machine Learning & AI</h3>
-            <ul>
+            <h3 data-lang="sr" class="active">Mašinsko Učenje i AI</h3>
+            <h3 data-lang="en">Machine Learning & AI</h3>
+            <ul data-lang="sr" class="active">
+              <li>Dizajn i arhitektura modela</li>
+              <li>Feature engineering</li>
+              <li>Optimizacija hiperparametara</li>
+              <li>Evaluacija i selekcija modela</li>
+            </ul>
+            <ul data-lang="en">
               <li>Model design & architecture</li>
               <li>Feature engineering</li>
               <li>Hyperparameter optimization</li>
@@ -906,8 +1006,15 @@
           </div>
           <div class="expertise-card">
             <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
-            <h3>MLOps & Cloud</h3>
-            <ul>
+            <h3 data-lang="sr" class="active">MLOps i Cloud</h3>
+            <h3 data-lang="en">MLOps & Cloud</h3>
+            <ul data-lang="sr" class="active">
+              <li>CI/CD za ML tokove rada</li>
+              <li>Docker, Airflow, MLflow</li>
+              <li>Terraform infrastruktura</li>
+              <li>GCP / Azure / AWS deployment</li>
+            </ul>
+            <ul data-lang="en">
               <li>CI/CD for ML workflows</li>
               <li>Docker, Airflow, MLflow</li>
               <li>Terraform infrastructure</li>
@@ -916,8 +1023,15 @@
           </div>
           <div class="expertise-card">
             <i class="fas fa-robot" aria-hidden="true"></i>
-            <h3>LLMOps & Agents</h3>
-            <ul>
+            <h3 data-lang="sr" class="active">LLMOps i Agenti</h3>
+            <h3 data-lang="en">LLMOps & Agents</h3>
+            <ul data-lang="sr" class="active">
+              <li>RAG sistemi i vektorske baze</li>
+              <li>LangGraph i CrewAI</li>
+              <li>Hugging Face integracija</li>
+              <li>Fine-tuning open modela</li>
+            </ul>
+            <ul data-lang="en">
               <li>RAG systems & vector DBs</li>
               <li>LangGraph & CrewAI</li>
               <li>Hugging Face integration</li>
@@ -926,8 +1040,15 @@
           </div>
           <div class="expertise-card">
             <i class="fas fa-chart-line" aria-hidden="true"></i>
-            <h3>Data Science</h3>
-            <ul>
+            <h3 data-lang="sr" class="active">Data Science</h3>
+            <h3 data-lang="en">Data Science</h3>
+            <ul data-lang="sr" class="active">
+              <li>Eksplorativna analiza podataka</li>
+              <li>Statističko modelovanje</li>
+              <li>Interaktivni dashboardi</li>
+              <li>Data storytelling</li>
+            </ul>
+            <ul data-lang="en">
               <li>Exploratory data analysis</li>
               <li>Statistical modeling</li>
               <li>Interactive dashboards</li>
@@ -942,8 +1063,10 @@
     <section id="stack">
       <div class="container">
         <div class="section-header">
-          <h2>Tech <span class="gradient-text">Stack</span></h2>
-          <p>Cutting-edge tools and frameworks we work with</p>
+          <h2 data-lang="sr" class="active">Tehnološki <span class="gradient-text">Stek</span></h2>
+          <h2 data-lang="en">Tech <span class="gradient-text">Stack</span></h2>
+          <p data-lang="sr" class="active">Najsavremenije tehnologije i framework-i sa kojima radimo</p>
+          <p data-lang="en">Cutting-edge tools and frameworks we work with</p>
         </div>
         <div class="tech-grid">
           <div class="tech-item"><i class="fab fa-python tech-icon" aria-hidden="true"></i><span>Python</span></div>
@@ -966,50 +1089,68 @@
     <section id="roadmap">
       <div class="container">
         <div class="section-header">
-          <h2>Our <span class="gradient-text">Workflow</span> Roadmap</h2>
-          <p>From discovery to reliable, monitored production systems</p>
+          <h2 data-lang="sr" class="active">Naš <span class="gradient-text">Proces</span> Rada</h2>
+          <h2 data-lang="en">Our <span class="gradient-text">Workflow</span> Roadmap</h2>
+          <p data-lang="sr" class="active">Od istraživanja do pouzdanih, monitorisanih produkcijskih sistema</p>
+          <p data-lang="en">From discovery to reliable, monitored production systems</p>
         </div>
 
         <div class="roadmap">
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
-            <h3>Discovery</h3>
-            <p>Align on business goals, success metrics, constraints, and data availability.</p>
+            <h3 data-lang="sr" class="active">Istraživanje</h3>
+            <h3 data-lang="en">Discovery</h3>
+            <p data-lang="sr" class="active">Usklađivanje poslovnih ciljeva, metrika uspeha, ograničenja i dostupnosti podataka.</p>
+            <p data-lang="en">Align on business goals, success metrics, constraints, and data availability.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-download" aria-hidden="true"></i></div>
-            <h3>Data Ingestion</h3>
-            <p>Ingest from APIs, DBs, files, events. Validate schemas & quality at the edge.</p>
+            <h3 data-lang="sr" class="active">Unos Podataka</h3>
+            <h3 data-lang="en">Data Ingestion</h3>
+            <p data-lang="sr" class="active">Unos iz API-ja, baza, fajlova, događaja. Validacija šeme i kvaliteta na izvoru.</p>
+            <p data-lang="en">Ingest from APIs, DBs, files, events. Validate schemas & quality at the edge.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-search" aria-hidden="true"></i></div>
-            <h3>Exploration</h3>
-            <p>EDA, profiling, drift checks, bias scans; define baselines & candidate features.</p>
+            <h3 data-lang="sr" class="active">Eksploracija</h3>
+            <h3 data-lang="en">Exploration</h3>
+            <p data-lang="sr" class="active">EDA, profiliranje, provera drifta, skeniranje pristranosti; definisanje baznih linija i kandidata.</p>
+            <p data-lang="en">EDA, profiling, drift checks, bias scans; define baselines & candidate features.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-cogs" aria-hidden="true"></i></div>
-            <h3>Features & Modeling</h3>
-            <p>Feature store integration; classical ML & deep learning; prompt/LLM design.</p>
+            <h3 data-lang="sr" class="active">Feature i Modelovanje</h3>
+            <h3 data-lang="en">Features & Modeling</h3>
+            <p data-lang="sr" class="active">Integracija feature store-a; klasično ML i duboko učenje; dizajn prompt/LLM-a.</p>
+            <p data-lang="en">Feature store integration; classical ML & deep learning; prompt/LLM design.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
-            <h3>Evaluation</h3>
-            <p>Offline metrics, cross-val, human-in-the-loop eval; guardrails & fairness checks.</p>
+            <h3 data-lang="sr" class="active">Evaluacija</h3>
+            <h3 data-lang="en">Evaluation</h3>
+            <p data-lang="sr" class="active">Offline metrike, unakrsna validacija, ljudska evaluacija; zaštitne mere i provere pravednosti.</p>
+            <p data-lang="en">Offline metrics, cross-val, human-in-the-loop eval; guardrails & fairness checks.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
-            <h3>MLOps & CI/CD</h3>
-            <p>Versioning (data/model/code), MLflow, Docker, IaC, tests; automated pipelines.</p>
+            <h3 data-lang="sr" class="active">MLOps i CI/CD</h3>
+            <h3 data-lang="en">MLOps & CI/CD</h3>
+            <p data-lang="sr" class="active">Verzionisanje (podaci/model/kod), MLflow, Docker, IaC, testovi; automatizovani pipeline-i.</p>
+            <p data-lang="en">Versioning (data/model/code), MLflow, Docker, IaC, tests; automated pipelines.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
-            <h3>Deployment</h3>
-            <p>Batch/real-time serving (FastAPI, gRPC), canary/blue-green, scalable infra.</p>
+            <h3 data-lang="sr" class="active">Deployment</h3>
+            <h3 data-lang="en">Deployment</h3>
+            <p data-lang="sr" class="active">Batch/real-time servisi (FastAPI, gRPC), canary/blue-green, skalabilna infrastruktura.</p>
+            <p data-lang="en">Batch/real-time serving (FastAPI, gRPC), canary/blue-green, scalable infra.</p>
           </div>
           <div class="roadmap-step">
             <div class="step-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
-            <h3>Monitoring & Iteration</h3>
-            <p>Telemetry, drift & quality monitoring, feedback loops, continuous improvement.</p>
+            <h3 data-lang="sr" class="active">Monitoring i Iteracija</h3>
+            <h3 data-lang="en">Monitoring & Iteration</h3>
+            <p data-lang="sr" class="active">Telemetrija, monitoring drifta i kvaliteta, petlje povratnih informacija, kontinuirano poboljšanje.</p>
+            <p data-lang="en">Telemetry, drift & quality monitoring, feedback loops, continuous improvement.</p>
           </div>
         </div>
       </div>
@@ -1019,13 +1160,17 @@
     <section id="projects">
       <div class="container">
         <div class="section-header">
-          <h2>Featured <span class="gradient-text">Projects</span></h2>
-          <p>Showcasing our technical capabilities through real-world applications</p>
+          <h2 data-lang="sr" class="active">Istaknuti <span class="gradient-text">Projekti</span></h2>
+          <h2 data-lang="en">Featured <span class="gradient-text">Projects</span></h2>
+          <p data-lang="sr" class="active">Prikazujemo naše tehničke mogućnosti kroz stvarne aplikacije</p>
+          <p data-lang="en">Showcasing our technical capabilities through real-world applications</p>
         </div>
         <div class="project-card">
           <div class="project-content">
-            <h3>Intelligent Document Processing Pipeline</h3>
-            <p>End-to-end MLOps pipeline for document classification and extraction using transformer models. Deployed on GCP with automated retraining and monitoring.</p>
+            <h3 data-lang="sr" class="active">Inteligentni Pipeline za Obradu Dokumenata</h3>
+            <h3 data-lang="en">Intelligent Document Processing Pipeline</h3>
+            <p data-lang="sr" class="active">End-to-end MLOps pipeline za klasifikaciju i ekstrakciju dokumenata koristeći transformer modele. Deployovan na GCP sa automatskim retreniranjem i monitoringom.</p>
+            <p data-lang="en">End-to-end MLOps pipeline for document classification and extraction using transformer models. Deployed on GCP with automated retraining and monitoring.</p>
             <div class="tech-tags">
               <span class="tag">PyTorch</span><span class="tag">Transformers</span><span class="tag">Docker</span>
               <span class="tag">MLflow</span><span class="tag">GCP</span><span class="tag">FastAPI</span>
@@ -1034,8 +1179,10 @@
         </div>
         <div class="project-card">
           <div class="project-content">
-            <h3>RAG-Powered Knowledge Assistant</h3>
-            <p>Production-ready LLM application with retrieval-augmented generation, vector search, and conversational memory using LangChain and CrewAI.</p>
+            <h3 data-lang="sr" class="active">RAG Asistent za Znanje</h3>
+            <h3 data-lang="en">RAG-Powered Knowledge Assistant</h3>
+            <p data-lang="sr" class="active">Produkcijski LLM aplikacija sa retrieval-augmented generation, vektorskom pretragom i konverzacijskom memorijom koristeći LangChain i CrewAI.</p>
+            <p data-lang="en">Production-ready LLM application with retrieval-augmented generation, vector search, and conversational memory using LangChain and CrewAI.</p>
             <div class="tech-tags">
               <span class="tag">LangChain</span><span class="tag">CrewAI</span><span class="tag">Pinecone</span>
               <span class="tag">OpenAI</span><span class="tag">Streamlit</span><span class="tag">Redis</span>
@@ -1044,8 +1191,10 @@
         </div>
         <div class="project-card">
           <div class="project-content">
-            <h3>Real-time Anomaly Detection System</h3>
-            <p>Scalable ML system for detecting anomalies in streaming data with automated alerting and model drift monitoring using Evidently AI.</p>
+            <h3 data-lang="sr" class="active">Sistem za Detekciju Anomalija u Realnom Vremenu</h3>
+            <h3 data-lang="en">Real-time Anomaly Detection System</h3>
+            <p data-lang="sr" class="active">Skalabilan ML sistem za detekciju anomalija u streaming podacima sa automatizovanim alarmiranjem i monitoringom drifta modela koristeći Evidently AI.</p>
+            <p data-lang="en">Scalable ML system for detecting anomalies in streaming data with automated alerting and model drift monitoring using Evidently AI.</p>
             <div class="tech-tags">
               <span class="tag">scikit-learn</span><span class="tag">Apache Kafka</span><span class="tag">Evidently</span>
               <span class="tag">Grafana</span><span class="tag">Terraform</span><span class="tag">AWS</span>
@@ -1059,8 +1208,10 @@
     <section id="blog">
       <div class="container">
         <div class="section-header">
-          <h2>Latest <span class="gradient-text">Insights</span></h2>
-          <p>Sharing knowledge from the frontlines of ML/AI engineering</p>
+          <h2 data-lang="sr" class="active">Najnoviji <span class="gradient-text">Uvidi</span></h2>
+          <h2 data-lang="en">Latest <span class="gradient-text">Insights</span></h2>
+          <p data-lang="sr" class="active">Delimo znanje sa prvih linija ML/AI inženjeringa</p>
+          <p data-lang="en">Sharing knowledge from the frontlines of ML/AI engineering</p>
         </div>
         <div class="blog-grid">
           <article class="blog-card">
@@ -1068,10 +1219,14 @@
               <i class="fas fa-rocket" aria-hidden="true"></i>
             </div>
             <div class="blog-content">
-              <div class="blog-meta">MLOps · 5 min read</div>
-              <h3>Building Production-Ready ML Pipelines</h3>
-              <p>A comprehensive guide to designing robust MLOps workflows with automated testing, monitoring, and deployment strategies.</p>
-              <a href="#blog" aria-label="Read more about Building Production-Ready ML Pipelines">Read More →</a>
+              <div class="blog-meta" data-lang="sr" class="active">MLOps · 5 min čitanja</div>
+              <div class="blog-meta" data-lang="en">MLOps · 5 min read</div>
+              <h3 data-lang="sr" class="active">Izgradnja Produkcijskih ML Pipeline-a</h3>
+              <h3 data-lang="en">Building Production-Ready ML Pipelines</h3>
+              <p data-lang="sr" class="active">Sveobuhvatan vodič za dizajniranje robusnih MLOps tokova rada sa automatizovanim testiranjem, monitoringom i deployment strategijama.</p>
+              <p data-lang="en">A comprehensive guide to designing robust MLOps workflows with automated testing, monitoring, and deployment strategies.</p>
+              <a href="#blog" data-lang-inline="sr" class="active">Pročitajte Više →</a>
+              <a href="#blog" data-lang-inline="en">Read More →</a>
             </div>
           </article>
           <article class="blog-card">
@@ -1079,10 +1234,14 @@
               <i class="fas fa-brain" aria-hidden="true"></i>
             </div>
             <div class="blog-content">
-              <div class="blog-meta">LLMs · 8 min read</div>
-              <h3>RAG Systems: Beyond Basic Retrieval</h3>
-              <p>Advanced techniques for building RAG applications with hybrid search, reranking, and context optimization.</p>
-              <a href="#blog" aria-label="Read more about RAG Systems">Read More →</a>
+              <div class="blog-meta" data-lang="sr" class="active">LLM · 8 min čitanja</div>
+              <div class="blog-meta" data-lang="en">LLMs · 8 min read</div>
+              <h3 data-lang="sr" class="active">RAG Sistemi: Dalje od Osnovnog Pretraživanja</h3>
+              <h3 data-lang="en">RAG Systems: Beyond Basic Retrieval</h3>
+              <p data-lang="sr" class="active">Napredne tehnike za izgradnju RAG aplikacija sa hibridnom pretragom, rerankingom i optimizacijom konteksta.</p>
+              <p data-lang="en">Advanced techniques for building RAG applications with hybrid search, reranking, and context optimization.</p>
+              <a href="#blog" data-lang-inline="sr" class="active">Pročitajte Više →</a>
+              <a href="#blog" data-lang-inline="en">Read More →</a>
             </div>
           </article>
           <article class="blog-card">
@@ -1090,10 +1249,14 @@
               <i class="fas fa-chart-line" aria-hidden="true"></i>
             </div>
             <div class="blog-content">
-              <div class="blog-meta">Data Engineering · 6 min read</div>
-              <h3>Scaling Feature Stores for ML</h3>
-              <p>Design patterns and best practices for building efficient feature stores that serve ML models at scale.</p>
-              <a href="#blog" aria-label="Read more about Scaling Feature Stores">Read More →</a>
+              <div class="blog-meta" data-lang="sr" class="active">Data Engineering · 6 min čitanja</div>
+              <div class="blog-meta" data-lang="en">Data Engineering · 6 min read</div>
+              <h3 data-lang="sr" class="active">Skaliranje Feature Store-a za ML</h3>
+              <h3 data-lang="en">Scaling Feature Stores for ML</h3>
+              <p data-lang="sr" class="active">Dizajn paterni i najbolje prakse za izgradnju efikasnih feature store-a koji služe ML modele u velikim razmjerama.</p>
+              <p data-lang="en">Design patterns and best practices for building efficient feature stores that serve ML models at scale.</p>
+              <a href="#blog" data-lang-inline="sr" class="active">Pročitajte Više →</a>
+              <a href="#blog" data-lang-inline="en">Read More →</a>
             </div>
           </article>
         </div>
@@ -1104,14 +1267,18 @@
     <section id="newsletter">
       <div class="container">
         <div class="newsletter-container">
-          <h2>Join Our Journey</h2>
-          <p>Get insights on AI/ML engineering, new project updates, and technical deep-dives delivered to your inbox.</p>
+          <h2 data-lang="sr" class="active">Pridružite Se Našem Putu</h2>
+          <h2 data-lang="en">Join Our Journey</h2>
+          <p data-lang="sr" class="active">Dobijajte uvide o AI/ML inženjeringu, ažuriranja o novim projektima i tehničke analize direktno na vašu email adresu.</p>
+          <p data-lang="en">Get insights on AI/ML engineering, new project updates, and technical deep-dives delivered to your inbox.</p>
           <form id="newsletterForm">
-            <input type="email" id="emailInput" placeholder="your@email.com" required aria-label="Email address">
-            <button type="submit">Subscribe</button>
+            <input type="email" id="emailInput" placeholder="vasa@email.com" required aria-label="Email adresa">
+            <button type="submit" data-lang-inline="sr" class="active">Pretplatite Se</button>
+            <button type="submit" data-lang-inline="en">Subscribe</button>
           </form>
           <div id="formMessage" class="form-message"></div>
-          <p style="color: #0f1419; font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">No spam. Unsubscribe anytime.</p>
+          <p style="color: #0f1419; font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;" data-lang="sr" class="active">Bez spam-a. Odjavite se bilo kada.</p>
+          <p style="color: #0f1419; font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;" data-lang="en">No spam. Unsubscribe anytime.</p>
         </div>
       </div>
     </section>
@@ -1120,17 +1287,29 @@
     <section id="about">
       <div class="container">
         <div class="section-header">
-          <h2>About <span class="gradient-text">Us</span></h2>
-          <p>Engineers, researchers, and builders at heart</p>
+          <h2 data-lang="sr" class="active">O <span class="gradient-text">Nama</span></h2>
+          <h2 data-lang="en">About <span class="gradient-text">Us</span></h2>
+          <p data-lang="sr" class="active">Inženjeri, istraživači i graditelji u srcu</p>
+          <p data-lang="en">Engineers, researchers, and builders at heart</p>
         </div>
         <div class="about-content">
           <div class="about-intro">
-            <p>
-              At <strong style="color: #64ffda;">Datastasis AI</strong>, we bridge the gap between cutting-edge research and production systems. Our team combines deep expertise in machine learning, software engineering, and cloud infrastructure to build AI solutions that actually work in the real world.
-            </p>
-            <p>
-              We believe in <strong>reproducible research</strong>, <strong>scalable architectures</strong>, and <strong>responsible AI</strong>. Every line of code we write is designed with maintainability, performance, and ethics in mind.
-            </p>
+            <div data-lang="sr" class="active">
+              <p>
+                U <strong style="color: #64ffda;">Datastasis AI</strong>, premošćujemo jaz između najsavremenijih istraživanja i produkcijskih sistema. Naš tim kombinuje duboku ekspertizu u mašinskom učenju, softverskom inženjeringu i cloud infrastrukturi kako bi izgradio AI rešenja koja zaista funkcionišu u stvarnom svetu.
+              </p>
+              <p>
+                Verujemo u <strong>reproduktivna istraživanja</strong>, <strong>skalabilne arhitekture</strong> i <strong>odgovorno AI</strong>. Svaka linija koda koju pišemo dizajnirana je sa održivošću, performansama i etikom na umu.
+              </p>
+            </div>
+            <div data-lang="en">
+              <p>
+                At <strong style="color: #64ffda;">Datastasis AI</strong>, we bridge the gap between cutting-edge research and production systems. Our team combines deep expertise in machine learning, software engineering, and cloud infrastructure to build AI solutions that actually work in the real world.
+              </p>
+              <p>
+                We believe in <strong>reproducible research</strong>, <strong>scalable architectures</strong>, and <strong>responsible AI</strong>. Every line of code we write is designed with maintainability, performance, and ethics in mind.
+              </p>
+            </div>
           </div>
           
           <div class="values-grid">
@@ -1138,22 +1317,28 @@
               <div class="value-icon">
                 <i class="fas fa-code" aria-hidden="true"></i>
               </div>
-              <h3>Clean Code</h3>
-              <p>Well-documented, tested, and maintainable systems</p>
+              <h3 data-lang="sr" class="active">Čist Kod</h3>
+              <h3 data-lang="en">Clean Code</h3>
+              <p data-lang="sr" class="active">Dobro dokumentovani, testirani i održivi sistemi</p>
+              <p data-lang="en">Well-documented, tested, and maintainable systems</p>
             </div>
             <div class="value-item">
               <div class="value-icon">
                 <i class="fas fa-users" aria-hidden="true"></i>
               </div>
-              <h3>Collaboration</h3>
-              <p>Open source contributors and community builders</p>
+              <h3 data-lang="sr" class="active">Saradnja</h3>
+              <h3 data-lang="en">Collaboration</h3>
+              <p data-lang="sr" class="active">Open source kontributori i graditelji zajednice</p>
+              <p data-lang="en">Open source contributors and community builders</p>
             </div>
             <div class="value-item">
               <div class="value-icon">
                 <i class="fas fa-rocket" aria-hidden="true"></i>
               </div>
-              <h3>Innovation</h3>
-              <p>Always exploring the bleeding edge of AI/ML</p>
+              <h3 data-lang="sr" class="active">Inovacija</h3>
+              <h3 data-lang="en">Innovation</h3>
+              <p data-lang="sr" class="active">Uvek istražujemo najnovije u AI/ML oblasti</p>
+              <p data-lang="en">Always exploring the bleeding edge of AI/ML</p>
             </div>
           </div>
         </div>
@@ -1165,12 +1350,16 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-cta">
-            <h2>Let's Build Something <span class="gradient-text">Intelligent</span></h2>
-            <p>Looking for AI/ML solutions or collaboration opportunities? We're passionate about solving complex problems with intelligent systems.</p>
-            <a href="mailto:hello@datastasis.ai" class="button primary">Get In Touch</a>
+            <h2 data-lang="sr" class="active">Izgradimo Nešto <span class="gradient-text">Inteligentno</span></h2>
+            <h2 data-lang="en">Let's Build Something <span class="gradient-text">Intelligent</span></h2>
+            <p data-lang="sr" class="active">Tražite AI/ML rešenja ili mogućnosti za saradnju? Strastveni smo u rešavanju složenih problema sa inteligentnim sistemima.</p>
+            <p data-lang="en">Looking for AI/ML solutions or collaboration opportunities? We're passionate about solving complex problems with intelligent systems.</p>
+            <a href="mailto:hello@datastasis.ai" class="button primary" data-lang-inline="sr" class="active">Kontaktirajte Nas</a>
+            <a href="mailto:hello@datastasis.ai" class="button primary" data-lang-inline="en">Get In Touch</a>
           </div>
           <div class="footer-links">
-            <h3>Connect</h3>
+            <h3 data-lang="sr" class="active">Povežite Se</h3>
+            <h3 data-lang="en">Connect</h3>
             <div class="social-links">
               <a href="https://github.com" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a>
               <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
@@ -1178,26 +1367,116 @@
               <a href="mailto:hello@datastasis.ai" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
             </div>
             <div>
-              <h4 style="font-size: 1rem; margin-bottom: 1rem;">Quick Links</h4>
+              <h4 style="font-size: 1rem; margin-bottom: 1rem;" data-lang="sr" class="active">Brzi Linkovi</h4>
+              <h4 style="font-size: 1rem; margin-bottom: 1rem;" data-lang="en">Quick Links</h4>
               <div class="quick-links">
-                <a href="#expertise">Expertise</a>
-                <a href="#stack">Tech Stack</a>
-                <a href="#roadmap">Workflow</a>
-                <a href="#projects">Projects</a>
+                <a href="#expertise" data-lang-inline="sr" class="active">Ekspertiza</a>
+                <a href="#expertise" data-lang-inline="en">Expertise</a>
+                <a href="#stack" data-lang-inline="sr" class="active">Tehnologije</a>
+                <a href="#stack" data-lang-inline="en">Tech Stack</a>
+                <a href="#roadmap" data-lang-inline="sr" class="active">Proces</a>
+                <a href="#roadmap" data-lang-inline="en">Workflow</a>
+                <a href="#projects" data-lang-inline="sr" class="active">Projekti</a>
+                <a href="#projects" data-lang-inline="en">Projects</a>
                 <a href="#blog">Blog</a>
-                <a href="#about">About</a>
+                <a href="#about" data-lang-inline="sr" class="active">O Nama</a>
+                <a href="#about" data-lang-inline="en">About</a>
               </div>
             </div>
           </div>
         </div>
         <div class="copyright">
-          <p>&copy; 2025 Datastasis AI. Engineering Intelligent Systems. Built with ❤️ and AI.</p>
+          <p data-lang="sr" class="active">&copy; 2025 Datastasis AI. Inženjering Inteligentnih Sistema. Napravljeno sa ❤️ i AI.</p>
+          <p data-lang="en">&copy; 2025 Datastasis AI. Engineering Intelligent Systems. Built with ❤️ and AI.</p>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
+    // Language Switching
+    let currentLang = 'sr'; // Default to Serbian
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Update all language-specific content
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-lang') === lang) {
+          el.classList.add('active');
+        }
+      });
+      
+      document.querySelectorAll('[data-lang-inline]').forEach(el => {
+        el.classList.remove('active');
+        if (el.getAttribute('data-lang-inline') === lang) {
+          el.classList.add('active');
+        }
+      });
+      
+      // Update language buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-language') === lang) {
+          btn.classList.add('active');
+        }
+      });
+      
+      // Update meta tags
+      const title = lang === 'sr' 
+        ? 'Datastasis AI - Inženjering Inteligentnih Sistema'
+        : 'Datastasis AI - Engineering Intelligent Systems';
+      const description = lang === 'sr'
+        ? 'ML & AI inženjeri koji grade inteligentne, skalabilne sisteme — od MLOps pipeline-a do generativnih AI aplikacija.'
+        : 'ML & AI engineers building intelligent, scalable systems — from MLOps pipelines to generative AI applications.';
+      
+      document.title = title;
+      document.querySelector('meta[name="description"]').setAttribute('content', description);
+      document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', description);
+      
+      // Update email placeholder
+      const emailInput = document.querySelector('#emailInput');
+      if (emailInput) {
+        emailInput.placeholder = lang === 'sr' ? 'vasa@email.com' : 'your@email.com';
+      }
+      
+      // Update back to top button aria-label
+      const backToTop = document.querySelector('#backToTop');
+      if (backToTop) {
+        backToTop.setAttribute('aria-label', lang === 'sr' ? 'Nazad na vrh' : 'Back to top');
+      }
+      
+      // Save preference to localStorage (optional)
+      try {
+        localStorage.setItem('preferredLanguage', lang);
+      } catch (e) {
+        // localStorage not available, skip
+      }
+    }
+
+    // Load saved language preference
+    try {
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang && (savedLang === 'sr' || savedLang === 'en')) {
+        switchLanguage(savedLang);
+      }
+    } catch (e) {
+      // localStorage not available, use default
+    }
+
+    // Language button event listeners
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-language');
+        switchLanguage(lang);
+      });
+    });
+
     // Smooth scroll with offset for fixed nav
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -1271,19 +1550,23 @@
     newsletterForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const email = emailInput.value;
-      const submitButton = this.querySelector('button[type="submit"]');
+      const submitButton = this.querySelector('button[type="submit"].active');
       
       // Disable button and show loading state
       submitButton.disabled = true;
-      submitButton.textContent = 'Subscribing...';
+      const originalText = submitButton.textContent;
+      submitButton.textContent = currentLang === 'sr' ? 'Učitavanje...' : 'Subscribing...';
       
       // Simulate API call (replace with actual API call)
       setTimeout(() => {
         formMessage.className = 'form-message success';
-        formMessage.textContent = `✓ Thanks for subscribing! Check your inbox at ${email}`;
+        formMessage.textContent = currentLang === 'sr' 
+          ? `✓ Hvala na pretplati! Proverite inbox na ${email}`
+          : `✓ Thanks for subscribing! Check your inbox at ${email}`;
+        
         this.reset();
         submitButton.disabled = false;
-        submitButton.textContent = 'Subscribe';
+        submitButton.textContent = originalText;
         
         // Hide message after 5 seconds
         setTimeout(() => {
@@ -1298,7 +1581,9 @@
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (this.value && !emailPattern.test(this.value)) {
         formMessage.className = 'form-message error';
-        formMessage.textContent = 'Please enter a valid email address';
+        formMessage.textContent = currentLang === 'sr'
+          ? 'Molimo unesite validnu email adresu'
+          : 'Please enter a valid email address';
       } else {
         formMessage.className = 'form-message';
         formMessage.textContent = '';
@@ -1365,8 +1650,4 @@
     });
   </script>
 </body>
-</html>80" fill="none" stroke="url(#logoGrad)" stroke-width="3" opacity="0.3"/>
-                <circle cx="100" cy="100" r="60" fill="none" stroke="url(#logoGrad)" stroke-width="3" opacity="0.5"/>
-                <circle cx="100" cy="100" r="40" fill="none" stroke="url(#logoGrad)" stroke-width="3" opacity="0.7"/>
-                <path d="M 100 60 L 130 100 L 100 140 L 70 100 Z" fill="url(#logoGrad)"/>
-                <circle cx="100" cy="100" r="
+</html>
