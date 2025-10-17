@@ -1,0 +1,808 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Datastasis AI - Engineering Intelligent Systems</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <meta name="description" content="ML & AI engineers building intelligent, scalable systems — from MLOps pipelines to generative AI applications.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+    * { margin: 0; padding: 0; border: 0; box-sizing: border-box; }
+    
+    body {
+      background: #0f1419;
+      color: #e4e6eb;
+      font-size: 16px;
+      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 3.5em; font-weight: 700; }
+    h2 { font-size: 2.5em; }
+    h3 { font-size: 1.5em; }
+    
+    a {
+      color: #64ffda;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover { color: #00d9b3; }
+
+    .container {
+      margin: 0 auto;
+      max-width: 1400px;
+      width: 100%;
+      padding: 0 4rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #64ffda 0%, #00d9b3 50%, #5ce1e6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Header/Hero */
+    #header {
+      background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
+      position: relative;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    #header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(92, 225, 230, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Navigation */
+    #nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 1.5rem 0;
+      z-index: 1000;
+      background: rgba(15, 20, 25, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    #nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    #nav .logo img { width: 50px; height: 50px; }
+
+    #nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    #nav li { display: inline-block; }
+    
+    #nav a {
+      color: #e4e6eb;
+      font-weight: 400;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    #nav a:hover {
+      color: #64ffda;
+      border-bottom-color: #64ffda;
+    }
+
+    /* Hero Content */
+    .hero-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      padding-top: 6rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr; /* give the logo more room */
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 { margin-bottom: 1rem; line-height: 1.1; }
+
+    .hero-text .tagline {
+      font-size: 1.5rem;
+      color: #64ffda;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #a8b2d1;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, #64ffda 0%, #00d9b3 100%);
+      color: #0f1419;
+    }
+
+    .button.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
+    }
+
+    .button.secondary {
+      border: 2px solid #64ffda;
+      color: #64ffda;
+    }
+
+    .button.secondary:hover { background: rgba(100, 255, 218, 0.1); }
+
+    .hero-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* remove animation from the generic hero-logo img to avoid conflicts */
+    .hero-logo img {
+      max-width: 500px;
+      width: 100%;
+      filter: drop-shadow(0 0 40px rgba(100, 255, 218, 0.3));
+    }
+
+    /* floating animation for the hero SVG */
+    .floating-logo{
+      display:block;
+      width: clamp(220px, 35vw, 520px);
+      height:auto;
+      animation: logo-float 6s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes logo-float{
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-20px); }
+    }
+
+    /* Sections */
+    section { padding: 6rem 0; position: relative; }
+
+    .section-header { text-align: center; margin-bottom: 4rem; }
+
+    .section-header h2 { margin-bottom: 1rem; }
+
+    .section-header p { font-size: 1.2rem; color: #a8b2d1; }
+
+    /* Expertise Cards */
+    #expertise { background: #0f1419; }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .expertise-card {
+      background: linear-gradient(135deg, #1a1f2e 0%, #151b26 100%);
+      padding: 2.5rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .expertise-card:hover {
+      transform: translateY(-5px);
+      border-color: #64ffda;
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+    }
+
+    .expertise-card i {
+      font-size: 3rem;
+      color: #64ffda;
+      margin-bottom: 1.5rem;
+    }
+
+    .expertise-card h3 { margin-bottom: 1rem; }
+
+    .expertise-card ul { list-style: none; color: #a8b2d1; }
+
+    .expertise-card li {
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      position: relative;
+    }
+
+    .expertise-card li::before {
+      content: "▹";
+      color: #64ffda;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Tech Stack */
+    #stack { background: #1a1f2e; }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .tech-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem;
+      background: rgba(100, 255, 218, 0.05);
+      border-radius: 1rem;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .tech-item:hover {
+      background: rgba(100, 255, 218, 0.1);
+      border-color: #64ffda;
+    }
+
+    .tech-icon { font-size: 3rem; color: #64ffda; }
+
+    .tech-item span { font-weight: 600; color: #fff; }
+
+    /* Projects Preview */
+    #projects { background: #0f1419; }
+
+    .project-card {
+      background: linear-gradient(135deg, #1a1f2e 0%, #151b26 100%);
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+    }
+
+    .project-content { padding: 2.5rem; }
+
+    .project-content h3 { margin-bottom: 1rem; }
+
+    .project-content p { color: #a8b2d1; margin-bottom: 1.5rem; }
+
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    .tag {
+      background: rgba(100, 255, 218, 0.1);
+      color: #64ffda;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+    }
+
+    /* Newsletter */
+    #newsletter input:focus { outline: none; border-color: #0f1419; }
+
+    #newsletter button:hover { background: #1a1f2e; transform: translateY(-2px); }
+
+    /* About values */
+    .value-card:hover { transform: translateY(-5px); }
+
+    /* Footer/Contact */
+    #footer {
+      background: #0a0e14;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-cta h2 { margin-bottom: 1rem; }
+
+    .footer-cta p { color: #a8b2d1; margin-bottom: 2rem; }
+
+    .social-links { display: flex; gap: 1.5rem; }
+
+    .social-links a {
+      width: 50px; height: 50px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(100, 255, 218, 0.1);
+      border-radius: 50%;
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      color: #64ffda;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: #64ffda; color: #0f1419; transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(100, 255, 218, 0.1);
+      color: #a8b2d1;
+    }
+
+    /* Mobile Nav Button */
+    #navButton { display: none; }
+
+    /* Mobile Styles */
+    @media screen and (max-width: 968px) {
+      .container { padding: 0 2rem; }
+      h1 { font-size: 2.5em; }
+      h2 { font-size: 2em; }
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-logo { order: -1; }
+      .hero-logo img { max-width: 300px; }
+      #nav ul { display: none; }
+      #navButton {
+        display: block; background: none; color: #64ffda;
+        font-size: 1.5rem; cursor: pointer;
+      }
+      .expertise-grid, .tech-grid { grid-template-columns: 1fr; }
+      .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="page-wrapper">
+    <!-- Navigation -->
+    <nav id="nav">
+      <div class="container">
+        <div class="logo">
+          <span class="gradient-text">DATASTASIS AI</span>
+        </div>
+        <ul>
+          <li><a href="#header">Home</a></li>
+          <li><a href="#expertise">Expertise</a></li>
+          <li><a href="#stack">Tech Stack</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+        <div id="navButton"><i class="fas fa-bars"></i></div>
+      </div>
+    </nav>
+
+    <!-- Hero/Header -->
+    <header id="header">
+      <div class="hero-content">
+        <div class="container">
+          <div class="hero-grid">
+            <div class="hero-text">
+              <div class="tagline">Engineering Intelligent Systems</div>
+              <h1>From Data to<br><span class="gradient-text">Deployment</span></h1>
+              <p>We're ML & AI engineers passionate about building intelligent, scalable systems — from MLOps pipelines to generative AI applications.</p>
+              <div class="hero-buttons">
+                <a href="#expertise" class="button primary">Explore Our Expertise</a>
+                <a href="#stack" class="button secondary">See Our Stack</a>
+              </div>
+            </div>
+
+            <!-- Floating hero logo -->
+            <div class="hero-logo">
+              <img src="images/Emblem Logo for Datastasis AI - Brain Circuit.svg" alt="Datastasis AI Logo" class="floating-logo" />
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Expertise Section -->
+    <section id="expertise">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our <span class="gradient-text">Expertise</span></h2>
+          <p>Comprehensive AI/ML capabilities from research to production</p>
+        </div>
+        <div class="expertise-grid">
+          <div class="expertise-card">
+            <i class="fas fa-brain"></i>
+            <h3>Machine Learning & AI</h3>
+            <ul>
+              <li>Model design & architecture</li>
+              <li>Feature engineering</li>
+              <li>Hyperparameter optimization</li>
+              <li>Model evaluation & selection</li>
+            </ul>
+          </div>
+          <div class="expertise-card">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>MLOps & Cloud</h3>
+            <ul>
+              <li>CI/CD for ML workflows</li>
+              <li>Docker, Airflow, MLflow</li>
+              <li>Terraform infrastructure</li>
+              <li>GCP / Azure / AWS deployment</li>
+            </ul>
+          </div>
+          <div class="expertise-card">
+            <i class="fas fa-robot"></i>
+            <h3>LLMOps & Agents</h3>
+            <ul>
+              <li>RAG systems & vector DBs</li>
+              <li>LangGraph & CrewAI</li>
+              <li>Hugging Face integration</li>
+              <li>Fine-tuning open models</li>
+            </ul>
+          </div>
+          <div class="expertise-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Data Science</h3>
+            <ul>
+              <li>Exploratory data analysis</li>
+              <li>Statistical modeling</li>
+              <li>Interactive dashboards</li>
+              <li>Data storytelling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="stack">
+      <div class="container">
+        <div class="section-header">
+          <h2>Tech <span class="gradient-text">Stack</span></h2>
+          <p>Cutting-edge tools and frameworks we work with</p>
+        </div>
+        <div class="tech-grid">
+          <div class="tech-item"><i class="fab fa-python tech-icon"></i><span>Python</span></div>
+          <div class="tech-item"><i class="fas fa-brain tech-icon"></i><span>TensorFlow</span></div>
+          <div class="tech-item"><i class="fas fa-fire tech-icon"></i><span>PyTorch</span></div>
+          <div class="tech-item"><i class="fas fa-link tech-icon"></i><span>LangChain</span></div>
+          <div class="tech-item"><i class="fas fa-database tech-icon"></i><span>MLflow</span></div>
+          <div class="tech-item"><i class="fab fa-docker tech-icon"></i><span>Docker</span></div>
+          <div class="tech-item"><i class="fab fa-google tech-icon"></i><span>GCP</span></div>
+          <div class="tech-item"><i class="fab fa-aws tech-icon"></i><span>AWS</span></div>
+          <div class="tech-item"><i class="fab fa-microsoft tech-icon"></i><span>Azure</span></div>
+          <div class="tech-item"><i class="fas fa-project-diagram tech-icon"></i><span>Airflow</span></div>
+          <div class="tech-item"><i class="fas fa-code-branch tech-icon"></i><span>Git</span></div>
+          <div class="tech-item"><i class="fas fa-cube tech-icon"></i><span>Kubernetes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Preview -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured <span class="gradient-text">Projects</span></h2>
+          <p>Showcasing our technical capabilities through real-world applications</p>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <h3>Intelligent Document Processing Pipeline</h3>
+            <p>End-to-end MLOps pipeline for document classification and extraction using transformer models. Deployed on GCP with automated retraining and monitoring.</p>
+            <div class="tech-tags">
+              <span class="tag">PyTorch</span><span class="tag">Transformers</span><span class="tag">Docker</span>
+              <span class="tag">MLflow</span><span class="tag">GCP</span><span class="tag">FastAPI</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <h3>RAG-Powered Knowledge Assistant</h3>
+            <p>Production-ready LLM application with retrieval-augmented generation, vector search, and conversational memory using LangChain and CrewAI.</p>
+            <div class="tech-tags">
+              <span class="tag">LangChain</span><span class="tag">CrewAI</span><span class="tag">Pinecone</span>
+              <span class="tag">OpenAI</span><span class="tag">Streamlit</span><span class="tag">Redis</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-content">
+            <h3>Real-time Anomaly Detection System</h3>
+            <p>Scalable ML system for detecting anomalies in streaming data with automated alerting and model drift monitoring using Evidently AI.</p>
+            <div class="tech-tags">
+              <span class="tag">scikit-learn</span><span class="tag">Apache Kafka</span><span class="tag">Evidently</span>
+              <span class="tag">Grafana</span><span class="tag">Terraform</span><span class="tag">AWS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog/Insights Section -->
+    <section id="blog" style="background: #1a1f2e;">
+      <div class="container">
+        <div class="section-header">
+          <h2>Latest <span class="gradient-text">Insights</span></h2>
+          <p>Sharing knowledge from the frontlines of ML/AI engineering</p>
+        </div>
+        <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+          <article class="blog-card" style="background: linear-gradient(135deg, #1a1f2e 0%, #151b26 100%); border-radius: 1rem; overflow: hidden; border: 1px solid rgba(100, 255, 218, 0.1); transition: all 0.3s ease;">
+            <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-rocket" style="font-size: 4rem; color: white; opacity: 0.9;"></i>
+            </div>
+            <div style="padding: 2rem;">
+              <div style="color: #64ffda; font-size: 0.9rem; margin-bottom: 0.5rem;">MLOps · 5 min read</div>
+              <h3 style="margin-bottom: 1rem;">Building Production-Ready ML Pipelines</h3>
+              <p style="color: #a8b2d1; margin-bottom: 1.5rem;">A comprehensive guide to designing robust MLOps workflows with automated testing, monitoring, and deployment strategies.</p>
+              <a href="#" style="color: #64ffda; font-weight: 600;">Read More →</a>
+            </div>
+          </article>
+          <article class="blog-card" style="background: linear-gradient(135deg, #1a1f2e 0%, #151b26 100%); border-radius: 1rem; overflow: hidden; border: 1px solid rgba(100, 255, 218, 0.1); transition: all 0.3s ease;">
+            <div style="height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-brain" style="font-size: 4rem; color: white; opacity: 0.9;"></i>
+            </div>
+            <div style="padding: 2rem;">
+              <div style="color: #64ffda; font-size: 0.9rem; margin-bottom: 0.5rem;">LLMs · 8 min read</div>
+              <h3 style="margin-bottom: 1rem;">RAG Systems: Beyond Basic Retrieval</h3>
+              <p style="color: #a8b2d1; margin-bottom: 1.5rem;">Advanced techniques for building RAG applications with hybrid search, reranking, and context optimization.</p>
+              <a href="#" style="color: #64ffda; font-weight: 600;">Read More →</a>
+            </div>
+          </article>
+          <article class="blog-card" style="background: linear-gradient(135deg, #1a1f2e 0%, #151b26 100%); border-radius: 1rem; overflow: hidden; border: 1px solid rgba(100, 255, 218, 0.1); transition: all 0.3s ease;">
+            <div style="height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-chart-line" style="font-size: 4rem; color: white; opacity: 0.9;"></i>
+            </div>
+            <div style="padding: 2rem;">
+              <div style="color: #64ffda; font-size: 0.9rem; margin-bottom: 0.5rem;">Data Engineering · 6 min read</div>
+              <h3 style="margin-bottom: 1rem;">Scaling Feature Stores for ML</h3>
+              <p style="color: #a8b2d1; margin-bottom: 1.5rem;">Design patterns and best practices for building efficient feature stores that serve ML models at scale.</p>
+              <a href="#" style="color: #64ffda; font-weight: 600;">Read More →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" style="background: linear-gradient(135deg, #64ffda 0%, #00d9b3 100%); padding: 4rem 0;">
+      <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+          <h2 style="color: #0f1419; margin-bottom: 1rem;">Join Our Journey</h2>
+          <p style="color: #0f1419; font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">Get insights on AI/ML engineering, new project updates, and technical deep-dives delivered to your inbox.</p>
+          <form style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <input type="email" placeholder="your@email.com" style="flex: 1; min-width: 250px; padding: 1rem 1.5rem; border-radius: 0.5rem; border: 2px solid transparent; font-size: 1rem; background: white; color: #0f1419;" required>
+            <button type="submit" class="button" style="background: #0f1419; color: #64ffda; border: 2px solid #0f1419; padding: 1rem 2.5rem; font-weight: 600; cursor: pointer;">Subscribe</button>
+          </form>
+          <p style="color: #0f1419; font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About/Team Section -->
+    <section id="about" style="background: #0f1419;">
+      <div class="container">
+        <div class="section-header">
+          <h2>About <span class="gradient-text">Us</span></h2>
+          <p>Engineers, researchers, and builders at heart</p>
+        </div>
+        <div style="max-width: 900px; margin: 0 auto;">
+          <div style="background: linear-gradient(135deg, #1a1f2e 0%, #151b26 100%); padding: 3rem; border-radius: 1rem; border: 1px solid rgba(100, 255, 218, 0.1); margin-bottom: 3rem;">
+            <p style="font-size: 1.2rem; color: #e4e6eb; line-height: 1.8; margin-bottom: 1.5rem;">
+              At <strong style="color: #64ffda;">Datastasis AI</strong>, we bridge the gap between cutting-edge research and production systems. Our team combines deep expertise in machine learning, software engineering, and cloud infrastructure to build AI solutions that actually work in the real world.
+            </p>
+            <p style="font-size: 1.1rem; color: #a8b2d1; line-height: 1.8;">
+              We believe in <strong>reproducible research</strong>, <strong>scalable architectures</strong>, and <strong>responsible AI</strong>. Every line of code we write is designed with maintainability, performance, and ethics in mind.
+            </p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: rgba(100, 255, 218, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(100, 255, 218, 0.3);">
+                <i class="fas fa-code" style="font-size: 2rem; color: #64ffda;"></i>
+              </div>
+              <h3 style="margin-bottom: 0.5rem;">Clean Code</h3>
+              <p style="color: #a8b2d1;">Well-documented, tested, and maintainable systems</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: rgba(100, 255, 218, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(100, 255, 218, 0.3);">
+                <i class="fas fa-users" style="font-size: 2rem; color: #64ffda;"></i>
+              </div>
+              <h3 style="margin-bottom: 0.5rem;">Collaboration</h3>
+              <p style="color: #a8b2d1;">Open source contributors and community builders</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; margin: 0 auto 1rem; background: rgba(100, 255, 218, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid rgba(100, 255, 218, 0.3);">
+                <i class="fas fa-rocket" style="font-size: 2rem; color: #64ffda;"></i>
+              </div>
+              <h3 style="margin-bottom: 0.5rem;">Innovation</h3>
+              <p style="color: #a8b2d1;">Always exploring the bleeding edge of AI/ML</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer/Contact -->
+    <footer id="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-cta">
+            <h2>Let's Build Something <span class="gradient-text">Intelligent</span></h2>
+            <p>Looking for AI/ML solutions or collaboration opportunities? We're passionate about solving complex problems with intelligent systems.</p>
+            <a href="mailto:hello@datastasis.ai" class="button primary">Get In Touch</a>
+          </div>
+          <div class="footer-links">
+            <h3>Connect</h3>
+            <div class="social-links">
+              <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div style="margin-top: 2rem;">
+              <h4 style="font-size: 1rem; margin-bottom: 1rem;">Quick Links</h4>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <a href="#expertise" style="color: #a8b2d1;">Expertise</a>
+                <a href="#stack" style="color: #a8b2d1;">Tech Stack</a>
+                <a href="#projects" style="color: #a8b2d1;">Projects</a>
+                <a href="#blog" style="color: #a8b2d1;">Blog</a>
+                <a href="#about" style="color: #a8b2d1;">About</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Datastasis AI. Engineering Intelligent Systems. Built with ❤️ and AI.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const navHeight = document.querySelector('#nav').offsetHeight;
+          const targetPosition = target.offsetTop - navHeight;
+          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Nav background on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('#nav');
+      if (window.scrollY > 100) {
+        nav.style.background = 'rgba(15, 20, 25, 0.98)';
+      } else {
+        nav.style.background = 'rgba(15, 20, 25, 0.95)';
+      }
+    });
+
+    // Blog card hover effects
+    document.querySelectorAll('.blog-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.borderColor = '#64ffda';
+      });
+      card.addEventListener('mouseleave', function() {
+        this.style.borderColor = 'rgba(100, 255, 218, 0.1)';
+      });
+    });
+
+    // Newsletter form submission
+    const newsletterForm = document.querySelector('#newsletter form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        alert(`Thanks for subscribing with ${email}! (This is a demo - connect to your email service)`);
+        this.reset();
+      });
+    }
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Add fade-in effect to sections
+    document.querySelectorAll('.expertise-card, .project-card, .blog-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinks = document.querySelectorAll('#nav a[href^="#"]');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.style.color = '#e4e6eb';
+        link.style.borderBottomColor = 'transparent';
+        if (link.getAttribute('href') === `#${current}`) {
+          link.style.color = '#64ffda';
+          link.style.borderBottomColor = '#64ffda';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
