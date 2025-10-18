@@ -316,9 +316,10 @@
     .mission-box {
       background: rgba(100, 255, 218, 0.1);
       border-left: 4px solid #64ffda;
-      padding: 1.5rem 2rem;
+      padding: 2rem 2.5rem;
       border-radius: 0.5rem;
       margin: 2rem 0;
+      text-align: center;
     }
 
     .mission-label {
@@ -328,15 +329,21 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .mission-text {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: #ffffff;
       margin: 0;
       line-height: 1.4;
+    }
+
+    .mission-text::before,
+    .mission-text::after {
+      content: '"';
+      color: #64ffda;
     }
 
     @keyframes logo-float {
@@ -992,7 +999,7 @@
 
                 <div class="mission-box">
                   <span class="mission-label">Our Mission</span>
-                  <p class="mission-text">Give data meaning that drives business success</p>
+                  <p class="mission-text">"Give data meaning that drives business success"</p>
                 </div>
 
                 <div class="hero-buttons">
