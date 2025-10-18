@@ -313,6 +313,32 @@
       filter: drop-shadow(0 0 40px rgba(100, 255, 218, 0.3));
     }
 
+    .mission-box {
+      background: rgba(100, 255, 218, 0.1);
+      border-left: 4px solid #64ffda;
+      padding: 1.5rem 2rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+    }
+
+    .mission-label {
+      display: block;
+      color: #64ffda;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .mission-text {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.4;
+    }
+
     @keyframes logo-float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
@@ -951,28 +977,24 @@
               <div data-lang="en">
                 <div class="tagline">Engineering Intelligent Systems</div>
                 <h1>From Data to<br><span class="gradient-text">Deployment</span></h1>
-                <div class="hero-highlights">
-                  <div class="highlight-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Experts in <strong>Data Analytics, AI & Machine Learning</strong></span>
-                  </div>
-                  <div class="highlight-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Transform data into <strong>measurable business outcomes</strong></span>
-                  </div>
-                  <div class="highlight-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Optimize operations, reduce costs, uncover <strong>growth opportunities</strong></span>
-                  </div>
-                  <div class="highlight-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Built on <strong>modern cloud technologies</strong></span>
-                  </div>
+                
+                <p>
+                  We are a team of experts in <strong>Data Analytics</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, dedicated to helping companies transform data into measurable business outcomes.
+                </p>
+                
+                <p>
+                  By combining <strong>data science</strong>, <strong>process automation</strong>, and <strong>AI-driven innovation</strong>, we design intelligent systems that optimize operations, reduce costs, and uncover new growth opportunities.
+                </p>
+                
+                <p>
+                  Our solutions are built on <strong>modern cloud technologies</strong>, ensuring scalability, security, and rapid deployment across diverse business environments.
+                </p>
+
+                <div class="mission-box">
+                  <span class="mission-label">Our Mission</span>
+                  <p class="mission-text">Give data meaning that drives business success</p>
                 </div>
 
-                <p class="mission-statement">
-                  Our mission: <strong>Give data meaning that drives business success.</strong>
-                </p>
                 <div class="hero-buttons">
                   <a href="#expertise" class="button primary">Explore Our Expertise</a>
                   <a href="#stack" class="button secondary">See Our Stack</a>
