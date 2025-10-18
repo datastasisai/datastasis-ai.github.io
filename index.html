@@ -313,6 +313,39 @@
       filter: drop-shadow(0 0 40px rgba(100, 255, 218, 0.3));
     }
 
+    .mission-box {
+      background: rgba(100, 255, 218, 0.1);
+      border-left: 4px solid #64ffda;
+      padding: 2rem 2.5rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .mission-label {
+      display: block;
+      color: #64ffda;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .mission-text {
+      font-size: 10rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .mission-text::before,
+    .mission-text::after {
+      content: '"';
+      color: #64ffda;
+    }
+
     @keyframes logo-float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
@@ -418,7 +451,8 @@
       content: "";
       position: absolute;
       left: 0; right: 0;
-      top: calc(50% - 2px);
+      top: 50%;
+      transform: translateY(-50%);
       height: 4px;
       background: linear-gradient(135deg, rgba(100, 255, 218, .25), rgba(0, 217, 179, .25));
       border-radius: 4px;
@@ -781,6 +815,19 @@
       color: #a8b2d1;
     }
 
+    .hero-text h1 {
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-text h1 {
+        white-space: normal; /* Allow wrapping on mobile */
+        font-size: 2em; /* Reduce size if needed */
+      }
+    }
+
     /* Hidden content for language switching */
     [data-lang] {
       display: none;
@@ -949,19 +996,25 @@
               <!-- English Content -->
               <div data-lang="en">
                 <div class="tagline">Engineering Intelligent Systems</div>
-                <h1>From Data to<br><span class="gradient-text">Deployment</span></h1>
+                <h1>From Data to <span class="gradient-text">Deployment</span></h1>
+                
                 <p>
                   We are a team of experts in <strong>Data Analytics</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, dedicated to helping companies transform data into measurable business outcomes.
                 </p>
+                
                 <p>
                   By combining <strong>data science</strong>, <strong>process automation</strong>, and <strong>AI-driven innovation</strong>, we design intelligent systems that optimize operations, reduce costs, and uncover new growth opportunities.
                 </p>
+                
                 <p>
                   Our solutions are built on <strong>modern cloud technologies</strong>, ensuring scalability, security, and rapid deployment across diverse business environments.
                 </p>
-                <p>
-                  Our mission is simple — <strong>to give data meaning that drives business success.</strong>
-                </p>
+
+                <div class="mission-box">
+                  <span class="mission-label">Our Mission</span>
+                  <p class="mission-text">Give data meaning that drives business success</p>
+                </div>
+
                 <div class="hero-buttons">
                   <a href="#expertise" class="button primary">Explore Our Expertise</a>
                   <a href="#stack" class="button secondary">See Our Stack</a>
@@ -1053,40 +1106,6 @@
               <li>Statistical modeling</li>
               <li>Interactive dashboards</li>
               <li>Data storytelling</li>
-            </ul>
-          </div>
-          <div class="expertise-card">
-            <i class="fas fa-database" aria-hidden="true"></i>
-            <h3 data-lang="sr" class="active">Data Engineering</h3>
-            <h3 data-lang="en">Data Engineering</h3>
-            <ul data-lang="sr" class="active">
-              <li>ETL/ELT pipeline dizajn</li>
-              <li>Data warehouse & lake arhitekture</li>
-              <li>Streaming data obrada</li>
-              <li>Optimizacija podataka</li>
-            </ul>
-            <ul data-lang="en">
-              <li>ETL/ELT pipeline design</li>
-              <li>Data warehouse & lake architecture</li>
-              <li>Streaming data processing</li>
-              <li>Data optimization</li>
-            </ul>
-          </div>
-          <div class="expertise-card">
-            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-            <h3 data-lang="sr" class="active">AI Governance & Sigurnost</h3>
-            <h3 data-lang="en">AI Governance & Security</h3>
-            <ul data-lang="sr" class="active">
-              <li>Model monitoring & compliance</li>
-              <li>Bias detekcija i ublažavanje</li>
-              <li>Objašnjivost modela (XAI)</li>
-              <li>Data privacy & zaštita</li>
-            </ul>
-            <ul data-lang="en">
-              <li>Model monitoring & compliance</li>
-              <li>Bias detection & mitigation</li>
-              <li>Model explainability (XAI)</li>
-              <li>Data privacy & security</li>
             </ul>
           </div>
         </div>
@@ -1199,6 +1218,8 @@
           <p data-lang="sr" class="active">Prikazujemo naše tehničke mogućnosti kroz stvarne aplikacije</p>
           <p data-lang="en">Showcasing our technical capabilities through real-world applications</p>
         </div>
+
+        <!-- Project 1 -->
         <div class="project-card">
           <div class="project-content">
             <h3 data-lang="sr" class="active">Inteligentni Pipeline za Obradu Dokumenata</h3>
@@ -1211,6 +1232,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Project 2 -->
         <div class="project-card">
           <div class="project-content">
             <h3 data-lang="sr" class="active">RAG Asistent za Znanje</h3>
@@ -1223,6 +1246,8 @@
             </div>
           </div>
         </div>
+
+        <!-- Project 3 -->
         <div class="project-card">
           <div class="project-content">
             <h3 data-lang="sr" class="active">Sistem za Detekciju Anomalija u Realnom Vremenu</h3>
@@ -1235,6 +1260,49 @@
             </div>
           </div>
         </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 data-lang="sr" class="active">Analiza Konkurencije pomoću AI-a</h3>
+            <h3 data-lang="en">AI-Powered Competitor Landscape Analysis</h3>
+            <p data-lang="sr" class="active">Platforma za analizu konkurenata korišćenjem javnih podataka, sentiment analize i NLP tehnika za praćenje tržišnih trendova i strategija konkurencije.</p>
+            <p data-lang="en">A data-driven intelligence system that analyzes competitors using public data, job postings, and sentiment analysis to detect trends and market shifts.</p>
+            <div class="tech-tags">
+              <span class="tag">Python</span><span class="tag">NLP</span><span class="tag">Hugging Face</span>
+              <span class="tag">BeautifulSoup</span><span class="tag">Pandas</span><span class="tag">Power BI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 data-lang="sr" class="active">Predikcija Odlaska Klijenata</h3>
+            <h3 data-lang="en">Predictive Customer Churn System</h3>
+            <p data-lang="sr" class="active">Model mašinskog učenja koji predviđa odlazak klijenata na osnovu njihovog ponašanja i demografskih podataka, sa implementacijom putem FastAPI servisa.</p>
+            <p data-lang="en">A machine learning model predicting customer churn based on behavioral and demographic data, deployed through a FastAPI service for business use.</p>
+            <div class="tech-tags">
+              <span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">FastAPI</span>
+              <span class="tag">MLflow</span><span class="tag">Azure</span><span class="tag">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card">
+          <div class="project-content">
+            <h3 data-lang="sr" class="active">Prediktivno Planiranje Potražnje</h3>
+            <h3 data-lang="en">Intelligent Demand Forecasting for Retail</h3>
+            <p data-lang="sr" class="active">Model dubokog učenja koji predviđa potražnju i cene proizvoda u maloprodaji korišćenjem istorijskih podataka i sezonskih obrazaca.</p>
+            <p data-lang="en">A deep learning forecasting model that predicts product demand and pricing trends for retail chains using historical and seasonal data.</p>
+            <div class="tech-tags">
+              <span class="tag">TensorFlow</span><span class="tag">Prophet</span><span class="tag">Pandas</span>
+              <span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">Looker Studio</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1388,17 +1456,17 @@
             <h2 data-lang="en">Let's Build Something <span class="gradient-text">Intelligent</span></h2>
             <p data-lang="sr" class="active">Tražite AI/ML rešenja ili mogućnosti za saradnju? Strastveni smo u rešavanju složenih problema sa inteligentnim sistemima.</p>
             <p data-lang="en">Looking for AI/ML solutions or collaboration opportunities? We're passionate about solving complex problems with intelligent systems.</p>
-            <a href="mailto:hello@datastasis.ai" class="button primary" data-lang-inline="sr" class="active">Kontaktirajte Nas</a>
-            <a href="mailto:hello@datastasis.ai" class="button primary" data-lang-inline="en">Get In Touch</a>
+            <a href="datastasis.ai@gmail.com" class="button primary" data-lang-inline="sr" class="active">Kontaktirajte Nas</a>
+            <a href="datastasis.ai@gmail.com" class="button primary" data-lang-inline="en">Get In Touch</a>
           </div>
           <div class="footer-links">
             <h3 data-lang="sr" class="active">Povežite Se</h3>
             <h3 data-lang="en">Connect</h3>
             <div class="social-links">
-              <a href="https://github.com" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a>
+              <a href="https://github.com/datastasisai" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i></a>
               <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
               <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-              <a href="mailto:hello@datastasis.ai" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+              <a href="datastasis.ai@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
             </div>
             <div>
               <h4 style="font-size: 1rem; margin-bottom: 1rem;" data-lang="sr" class="active">Brzi Linkovi</h4>
