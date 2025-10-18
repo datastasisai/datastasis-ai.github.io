@@ -313,39 +313,6 @@
       filter: drop-shadow(0 0 40px rgba(100, 255, 218, 0.3));
     }
 
-    .mission-box {
-      background: rgba(100, 255, 218, 0.1);
-      border-left: 4px solid #64ffda;
-      padding: 2rem 2.5rem;
-      border-radius: 0.5rem;
-      margin: 2rem 0;
-      text-align: center;
-    }
-
-    .mission-label {
-      display: block;
-      color: #64ffda;
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
-    }
-
-    .mission-text {
-      font-size: 6rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin: 0;
-      line-height: 1.4;
-    }
-
-    .mission-text::before,
-    .mission-text::after {
-      content: '"';
-      color: #64ffda;
-    }
-
     @keyframes logo-float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-20px); }
@@ -451,8 +418,7 @@
       content: "";
       position: absolute;
       left: 0; right: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      top: calc(50% - 2px);
       height: 4px;
       background: linear-gradient(135deg, rgba(100, 255, 218, .25), rgba(0, 217, 179, .25));
       border-radius: 4px;
@@ -815,19 +781,6 @@
       color: #a8b2d1;
     }
 
-    .hero-text h1 {
-      margin-bottom: 1rem;
-      line-height: 1.1;
-      white-space: nowrap;
-    }
-
-    @media screen and (max-width: 768px) {
-      .hero-text h1 {
-        white-space: normal; /* Allow wrapping on mobile */
-        font-size: 2em; /* Reduce size if needed */
-      }
-    }
-
     /* Hidden content for language switching */
     [data-lang] {
       display: none;
@@ -996,25 +949,19 @@
               <!-- English Content -->
               <div data-lang="en">
                 <div class="tagline">Engineering Intelligent Systems</div>
-                <h1>From Data to <span class="gradient-text">Deployment</span></h1>
-                
+                <h1>From Data to<br><span class="gradient-text">Deployment</span></h1>
                 <p>
                   We are a team of experts in <strong>Data Analytics</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, dedicated to helping companies transform data into measurable business outcomes.
                 </p>
-                
                 <p>
                   By combining <strong>data science</strong>, <strong>process automation</strong>, and <strong>AI-driven innovation</strong>, we design intelligent systems that optimize operations, reduce costs, and uncover new growth opportunities.
                 </p>
-                
                 <p>
                   Our solutions are built on <strong>modern cloud technologies</strong>, ensuring scalability, security, and rapid deployment across diverse business environments.
                 </p>
-
-                <div class="mission-box">
-                  <span class="mission-label">Our Mission</span>
-                  <p class="mission-text">Give data meaning that drives business success</p>
-                </div>
-
+                <p>
+                  Our mission is simple — <strong>to give data meaning that drives business success.</strong>
+                </p>
                 <div class="hero-buttons">
                   <a href="#expertise" class="button primary">Explore Our Expertise</a>
                   <a href="#stack" class="button secondary">See Our Stack</a>
@@ -1106,6 +1053,40 @@
               <li>Statistical modeling</li>
               <li>Interactive dashboards</li>
               <li>Data storytelling</li>
+            </ul>
+          </div>
+          <div class="expertise-card">
+            <i class="fas fa-database" aria-hidden="true"></i>
+            <h3 data-lang="sr" class="active">Data Engineering</h3>
+            <h3 data-lang="en">Data Engineering</h3>
+            <ul data-lang="sr" class="active">
+              <li>ETL/ELT pipeline dizajn</li>
+              <li>Data warehouse & lake arhitekture</li>
+              <li>Streaming data obrada</li>
+              <li>Optimizacija podataka</li>
+            </ul>
+            <ul data-lang="en">
+              <li>ETL/ELT pipeline design</li>
+              <li>Data warehouse & lake architecture</li>
+              <li>Streaming data processing</li>
+              <li>Data optimization</li>
+            </ul>
+          </div>
+          <div class="expertise-card">
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            <h3 data-lang="sr" class="active">AI Governance & Sigurnost</h3>
+            <h3 data-lang="en">AI Governance & Security</h3>
+            <ul data-lang="sr" class="active">
+              <li>Model monitoring & compliance</li>
+              <li>Bias detekcija i ublažavanje</li>
+              <li>Objašnjivost modela (XAI)</li>
+              <li>Data privacy & zaštita</li>
+            </ul>
+            <ul data-lang="en">
+              <li>Model monitoring & compliance</li>
+              <li>Bias detection & mitigation</li>
+              <li>Model explainability (XAI)</li>
+              <li>Data privacy & security</li>
             </ul>
           </div>
         </div>
