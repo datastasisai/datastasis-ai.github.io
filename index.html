@@ -815,6 +815,19 @@
       color: #a8b2d1;
     }
 
+    .hero-text h1 {
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-text h1 {
+        white-space: normal; /* Allow wrapping on mobile */
+        font-size: 2em; /* Reduce size if needed */
+      }
+    }
+
     /* Hidden content for language switching */
     [data-lang] {
       display: none;
